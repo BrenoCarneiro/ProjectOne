@@ -1,13 +1,21 @@
 # ProjectOne
 
-Demonstração de projeto em C# utilizando alguns recursos como:
+DemonstraÃ§Ã£o de projeto em C# utilizando alguns recursos como:
 
--Declaração de tipos explícitos e implícitos.
--Iterações com for e foreach.
--Utilização de Enums.
--Herança entre classes.
+-DeclaraÃ§Ã£o de tipos explÃ­citos e implÃ­citos.
+
+-IteraÃ§Ãµes com for e foreach.
+
+-UtilizaÃ§Ã£o de Enums.
+
+-HeranÃ§a entre classes.
+
 -Construtores.
--Parâmetros "named", "optional", "Out".
+
+-ParÃ¢metros "named", "optional", "Out".
+
 -Arrays, listas e "dictionary".
+
 -Diferentes formas de comparar strings.
+
 -Properties.
