@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 
 namespace ProjectOne.Models;
 
-public class AdminModel : UserModel
+public class AdminModel : UserModel //Representação de herança entre classes
 {
-    public AdminModel(string firstName, string lastName, string role) : base(firstName, lastName, role)
+    //Utilizaçãao de Enum com Flags
+    public override AccessTo SystemsAccess { get; protected set; } = AccessTo.SystemOne | AccessTo.SystemTwo | AccessTo.SystemThree | AccessTo.SystemFour; 
+    public AdminModel(string firstName, string lastName, string role) : base(firstName, lastName, role) //Reutilizando o construtor da classe pai
     {
 
     }
@@ -88,6 +90,18 @@ public class AdminModel : UserModel
         }
         return role;
 
+    }
+    public void Shutdown(out string message) //Função com utilização de parâmetro Named e Out
+    {
+        message = "Shutting down the application...";
+        Console.WriteLine(message);
+        Thread.Sleep(5000);
+        Environment.Exit(0);
+    }
+
+    public void Shutdown() //A mesma função anterior com utilização de parâmetro Optional
+    {
+        Environment.Exit(0);
     }
 
 }

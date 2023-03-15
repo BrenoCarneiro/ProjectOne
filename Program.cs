@@ -1,8 +1,8 @@
 ﻿using ProjectOne.Models;
 
-Dictionary<int, dynamic> appData = new Dictionary<int, dynamic>();
-string[] roles = new string[] { "ADMIN", "INTERN" };
-string firstName = string.Empty;
+Dictionary<int, dynamic> appData = new Dictionary<int, dynamic>(); //Uso de Dictionary para armazenar os usuários
+string[] roles = new string[] { "ADMIN", "INTERN" }; //Uso de array para armazenar os papéis
+string firstName = string.Empty; //Declaração de tipo explícito
 string lastName = string.Empty;
 int userId = 1;
 
@@ -22,24 +22,24 @@ Console.WriteLine("Select an option, type the respective number: ");
 Console.WriteLine("1 - Add a new user");
 Console.WriteLine("2 - Add a new role");
 Console.WriteLine("3 - Quit");
-var selectedOption = Console.ReadLine();
+var selectedOption = Console.ReadLine(); //Declaração de tipo implícito
 
 
-if (selectedOption.Equals("1"))
+if (selectedOption.Equals("1") && adminUser.SystemsAccess.HasFlag(AccessTo.SystemOne) ) //Uma forma de comparação entre Strings
 {
     userId++;
     appData.Add(userId, adminUser.AddUser(appData, roles));
     Console.WriteLine("User created successfully", Environment.NewLine);
 }
 
-else if (selectedOption.Equals("2"))
+else if (selectedOption.Equals("2") && adminUser.SystemsAccess.HasFlag(AccessTo.SystemTwo)) //Utilizaçãao de Enum com Flags
 {
     Array.Resize(ref roles, roles.Length + 1);
     roles[roles.Length - 1] = adminUser.AddRole(roles);
     Console.WriteLine("Role created successfully", Environment.NewLine);
 }
 
-while (true && (adminUser.Role[0] == "ADMIN"))
+while (true && (adminUser.Role[0] == "ADMIN"))  //Outra forma de comparação entre Strings
 {
     Console.Clear();
     Console.WriteLine("Select an option, type the respective number: ");
@@ -67,7 +67,7 @@ while (true && (adminUser.Role[0] == "ADMIN"))
 
     else if (selectedOption.Equals("3"))
     {
-        foreach (var role in roles)
+        foreach (var role in roles) //Utilização de iteração com Foreach
         {
             Console.WriteLine("- " + role);
         }
@@ -87,7 +87,7 @@ while (true && (adminUser.Role[0] == "ADMIN"))
     }
     else if (selectedOption.Equals("5"))
     {
-        for (int i = 0; i < roles.Length; i++)
+        for (int i = 0; i < roles.Length; i++) //Utilização de iteração com For
         {
             Console.WriteLine($"{i + 1} - To remove: {roles[i]}");
         }
@@ -193,7 +193,7 @@ while (true && (adminUser.Role[0] == "ADMIN"))
 
                     if (selectedOption.Equals("1"))
                     {
-                        Environment.Exit(0);
+                        adminUser.Shutdown();
                     }
                     else
                     {
@@ -216,7 +216,7 @@ while (true && (adminUser.Role[0] == "ADMIN"))
 
     else if (selectedOption.Equals("7"))
     {
-        Environment.Exit(0);
+        adminUser.Shutdown(out string message);
     }
 
     else
