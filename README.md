@@ -1,6 +1,3 @@
-## Projeto Inicial
-### (Fase 1, Etapa 2)
-
 Demonstração de projeto em C# utilizando alguns recursos como:
 
 - Declaração de tipos explícitos e implícitos.
